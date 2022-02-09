@@ -21,9 +21,9 @@ public class Dispatcher {
     private String name;
     private String dayoff;
     @Column(name = "start_lunch")
-    private String startLunch;
+    private LocalTime startLunch;
     @Column(name = "end_lunch")
-    private String endLunch;
+    private LocalTime endLunch;
     @Column(name = "workstatus")
     private boolean workStatus;
 }

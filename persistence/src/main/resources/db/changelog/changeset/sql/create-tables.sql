@@ -17,9 +17,9 @@
             CREATE TABLE IF NOT EXISTS dispatcher (
             id serial PRIMARY KEY,
             dayoff varchar(10),
-            end_lunch varchar,
+            end_lunch time DEFAULT '15:00',
             name varchar(20),
-            start_lunch varchar,
+            start_lunch time DEFAULT '14:00',
             workstatus boolean DEFAULT true
             );
 
