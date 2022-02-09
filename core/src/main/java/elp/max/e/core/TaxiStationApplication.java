@@ -1,4 +1,4 @@
-package elp.max.e.web;
+package elp.max.e.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

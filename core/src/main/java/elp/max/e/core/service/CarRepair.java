@@ -1,4 +1,4 @@
-package elp.max.e.core;
+package elp.max.e.core.service;
 
 import elp.max.e.domain.Car;
 import elp.max.e.domain.Mechanic;

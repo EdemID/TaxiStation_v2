@@ -1,6 +1,6 @@
 package elp.max.e.web.controller;
 
-import elp.max.e.core.BusinessLogic;
+import elp.max.e.core.service.BusinessLogic;
 import elp.max.e.domain.Client;
 import elp.max.e.domain.OrderNumber;
 import elp.max.e.persistence.service.ClientServiceImpl;

@@ -14,6 +14,15 @@
             order_number varchar(255) DEFAULT 'No order'
             );
 
+            CREATE TABLE IF NOT EXISTS dispatcher (
+            id serial PRIMARY KEY,
+            dayoff varchar(10),
+            end_lunch time,
+            name varchar(20),
+            start_lunch time,
+            workstatus boolean DEFAULT true
+            );
+
             CREATE TABLE IF NOT EXISTS driver (
             id serial PRIMARY KEY,
             busy boolean DEFAULT false,
@@ -38,11 +47,6 @@
             repair_time bigint DEFAULT 20000,
             resource int DEFAULT 5
             );
-
-            alter table if exists car
-            add constraint FKg5qwfeydmo0tj386i1b4g673v
-            foreign key (mechanic_id)
-            references service;
 
             CREATE SEQUENCE IF NOT EXISTS hibernate_sequence START 1;
             CREATE SEQUENCE IF NOT EXISTS my_seq_gen START 1;
