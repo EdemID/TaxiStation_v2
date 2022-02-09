@@ -20,7 +20,6 @@
             <artifactId>core</artifactId>
             <version>0.0.2-SNAPSHOT</version>
         </dependency>
-
         <dependency>
             <groupId>elp.max.e</groupId>
             <artifactId>persistence</artifactId>

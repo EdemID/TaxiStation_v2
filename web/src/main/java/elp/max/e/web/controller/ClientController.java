@@ -5,7 +5,7 @@ import elp.max.e.domain.Client;
 import elp.max.e.domain.OrderNumber;
 import elp.max.e.persistence.service.ClientServiceImpl;
 import elp.max.e.web.exception.ValidationDtoException;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -17,13 +17,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping("/client")
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ClientController {
 
     private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
-    private final ClientServiceImpl clientService;
-    private final BusinessLogic businessLogic;
+    private ClientServiceImpl clientService;
+    private BusinessLogic businessLogic;
 
     @PostMapping(value = "/create", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Client create(@RequestBody Client client) throws ValidationDtoException {
