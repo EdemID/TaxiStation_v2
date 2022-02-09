@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Specify here the path of the folder you want to save your logs -->
+    <property name="LOGFILE_PATH" value="logs" />
+
+    <appender name="STDOUT" class="ch.qos.logback.elp.max.e.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+<!--    В pattern мы указываем, что в лог нужно писать сначала дату с временем %d{dd.MM.yyyy HH:mm:ss.SSS},-->
+<!--    потом название потока [%thread], затем пять символов уровеня логирования %-5level, затем название логера,-->
+<!--    пытаясь уместить его в 36 символов, %logger{36}, затем сообщение логера %msg и перевод строки %n.-->
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+              class="ch.qos.logback.elp.max.e.core.rolling.RollingFileAppender">
+        <file>${LOGFILE_PATH}/slf4j-logback-taxiStation.log</file>
+        <rollingPolicy
+                class="ch.qos.logback.elp.max.e.core.rolling.TimeBasedRollingPolicy">
+            <!-- Ежедневный перенос -->
+            <fileNamePattern>${LOGFILE_PATH}/slf4j-logback-taxiStation.%d{yyyy-MM-dd}.log</fileNamePattern>
+
+            <!-- Храним файлы логов 10 дней -->
+            <maxHistory>10</maxHistory>
+
+            <!-- Максимальный размер файлов лога 10 гигабайт -->
+            <totalSizeCap>10GB</totalSizeCap>
+
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level  %logger{20} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    <logger name="org.apache.catalina.elp.max.e.core" level="OFF" />-->
+    <root level="info">
+        <appender-ref ref="STDOUT"  />
+        <appender-ref ref="FILE"    />
+    </root>
+</configuration>
