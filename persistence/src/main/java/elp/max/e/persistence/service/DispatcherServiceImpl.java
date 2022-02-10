@@ -4,8 +4,6 @@ import elp.max.e.domain.Dispatcher;
 import elp.max.e.persistence.exception.EntityNotFoundException;
 import elp.max.e.persistence.jparepository.DispatcherRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +15,6 @@ import java.util.List;
 @Transactional
 public class DispatcherServiceImpl {
 
-    private static Logger logger = LoggerFactory.getLogger(DispatcherServiceImpl.class);
-    
     private final DispatcherRepository dispatcherRepository;
 
     public List<Dispatcher> findAll() {

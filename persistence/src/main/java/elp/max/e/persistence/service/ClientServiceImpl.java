@@ -4,8 +4,7 @@ import elp.max.e.domain.Client;
 import elp.max.e.persistence.exception.EntityNotFoundException;
 import elp.max.e.persistence.jparepository.ClientRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,25 +14,24 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class ClientServiceImpl {
-
-    private static final Logger logger = LoggerFactory.getLogger(ClientServiceImpl.class);
 
     private final ClientRepository clientRepository;
 
     public List<Client> findAll() {
-        logger.info("Find all clients.");
+        log.info("Find all clients.");
         return new ArrayList<>(clientRepository.findAll());
     }
 
     public Client findById(Long clientId) throws EntityNotFoundException {
-        logger.info("Client search by id.");
+        log.info("Client search by id.");
         Client clientEntity;
         if (clientRepository.findById(clientId).isPresent()) {
-            logger.info("Client with id={} found!", clientId);
+            log.info("Client with id={} found!", clientId);
             clientEntity = clientRepository.findById(clientId).get();
         } else {
-            logger.info("Client with id={} not found!", clientId);
+            log.info("Client with id={} not found!", clientId);
             throw new EntityNotFoundException("Клиент " + clientId + " не найден!");
         }
         return clientEntity;
@@ -41,8 +39,8 @@ public class ClientServiceImpl {
 
     public Client save(Client entity) {
         Client clientEntity = clientRepository.save(entity);
-        logger.info("Save the client.");
-        logger.info("Client saved: {}!", entity);
+        log.info("Save the client.");
+        log.info("Client saved: {}!", entity);
         return clientEntity;
     }
 
@@ -52,8 +50,8 @@ public class ClientServiceImpl {
         clientEntity.setName(entity.getName());
         clientEntity.setOrderNumber(entity.getOrderNumber());
         clientEntity = clientRepository.save(clientEntity);
-        logger.info("Update the client with id: {}.", id);
-        logger.info("Client updated: {}!", entity);
+        log.info("Update the client with id: {}.", id);
+        log.info("Client updated: {}!", entity);
         return clientEntity;
     }
 

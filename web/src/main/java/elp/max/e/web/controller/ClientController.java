@@ -6,8 +6,7 @@ import elp.max.e.domain.OrderNumber;
 import elp.max.e.persistence.service.ClientServiceImpl;
 import elp.max.e.web.exception.ValidationDtoException;
 import lombok.AllArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,44 +17,43 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/client")
 @AllArgsConstructor
+@Slf4j
 public class ClientController {
-
-    private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     private ClientServiceImpl clientService;
     private BusinessLogic businessLogic;
 
     @PostMapping(value = "/create", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Client create(@RequestBody Client client) throws ValidationDtoException {
-        logger.info("Get-request received with client: {}", client);
+        log.info("Get-request received with client: {}", client);
         Client savedClient = clientService.save(client);
-        logger.info("The result is returned: {}", savedClient);
+        log.info("The result is returned: {}", savedClient);
         return savedClient;
     }
 
     @PatchMapping(value = "/update/{clientId}", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Client update(@PathVariable Long clientId, @RequestBody Client client) throws ValidationDtoException {
-        logger.info("Get-request received with" + System.lineSeparator() +
+        log.info("Get-request received with" + System.lineSeparator() +
                      "clientId: {}" + System.lineSeparator() +
                      "client: {}", clientId, client);
         Client updatedClient = clientService.update(clientId, client);
-        logger.info("The result is returned: {}", updatedClient);
+        log.info("The result is returned: {}", updatedClient);
         return updatedClient;
     }
 
     @GetMapping(value = "/all")
         public List<Client> findAll() {
-            logger.info("Get-request 'findAll()' received");
+            log.info("Get-request 'findAll()' received");
             List<Client> clients = clientService.findAll();
-            logger.info("The result is returned: {}", clients);
+            log.info("The result is returned: {}", clients);
             return clients;
     }
 
     @GetMapping(value = "/{clientId}", produces = APPLICATION_JSON_VALUE)
     public Client findById(@PathVariable Long clientId) {
-        logger.info("Get-request received with clientId: {}", clientId);
+        log.info("Get-request received with clientId: {}", clientId);
         Client client = clientService.findById(clientId);
-        logger.info("The result is returned: {}", client);
+        log.info("The result is returned: {}", client);
         return client;
     }
 
@@ -74,9 +72,9 @@ public class ClientController {
 
     @GetMapping(value = "/{clientId}/call", produces = APPLICATION_JSON_VALUE)
     public OrderNumber call(@PathVariable Long clientId) throws Exception {
-        logger.info("Get-request received with clientId: {}", clientId);
+        log.info("Get-request received with clientId: {}", clientId);
         OrderNumber orderNumber = businessLogic.call(clientId);
-//        logger.info("The result is returned: {}", orderNumber);
+//        log.info("The result is returned: {}", orderNumber);
 //        return orderNumber;
         return orderNumber;
     }

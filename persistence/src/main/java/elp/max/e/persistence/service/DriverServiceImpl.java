@@ -4,8 +4,6 @@ import elp.max.e.domain.Driver;
 import elp.max.e.persistence.exception.EntityNotFoundException;
 import elp.max.e.persistence.jparepository.DriverRepository;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,8 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DriverServiceImpl {
     
-    private static final Logger logger = LoggerFactory.getLogger(DriverServiceImpl.class);
-
     private final DriverRepository driverRepository;
 
     public List<Driver> findAll() {
