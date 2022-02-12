@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,6 +46,12 @@ public class DispatcherServiceImpl {
 
     public void delete(Long dispatcherId) {
 
+    }
+
+    public Dispatcher findWorkingDispatcher() {
+        LocalTime currentTime = LocalTime.now();
+        String dayOfWeek = LocalDate.now().getDayOfWeek().toString();
+        return dispatcherRepository.findWorkingDispatcher(currentTime, dayOfWeek);
     }
 
 }

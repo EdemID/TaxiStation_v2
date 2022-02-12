@@ -65,8 +65,11 @@ public class CarServiceImpl {
         return carEntity;
     }
 
-    @Transactional
     public void delete(Long id) {
         carRepository.deleteById(id);
+    }
+
+    public Car findFreeCar() {
+        return carRepository.findFreeCar();
     }
 }

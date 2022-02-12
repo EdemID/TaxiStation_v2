@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,5 +53,10 @@ public class DriverServiceImpl {
 
     public void delete(Long id) {
 
+    }
+
+    public Driver findFreeAndWorkingDriver() {
+        String dayOfWeek = LocalDate.now().getDayOfWeek().toString();
+        return driverRepository.findFreeAndWorkingDriver(dayOfWeek);
     }
 }

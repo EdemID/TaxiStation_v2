@@ -1,9 +1,9 @@
 package elp.max.e.web.controller;
 
-import elp.max.e.core.service.BusinessLogic;
 import elp.max.e.domain.Client;
 import elp.max.e.domain.OrderNumber;
 import elp.max.e.persistence.service.ClientServiceImpl;
+import elp.max.e.persistence.service.DispatcherServiceImpl;
 import elp.max.e.web.exception.ValidationDtoException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class ClientController {
 
     private ClientServiceImpl clientService;
-    private BusinessLogic businessLogic;
+    private DispatcherServiceImpl dispatcherService;
 
     @PostMapping(value = "/create", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public Client create(@RequestBody Client client) throws ValidationDtoException {
@@ -73,10 +73,11 @@ public class ClientController {
     @GetMapping(value = "/{clientId}/call", produces = APPLICATION_JSON_VALUE)
     public OrderNumber call(@PathVariable Long clientId) throws Exception {
         log.info("Get-request received with clientId: {}", clientId);
-        OrderNumber orderNumber = businessLogic.call(clientId);
-//        log.info("The result is returned: {}", orderNumber);
+//        OrderNumber orderNumber = businessLogic.call(clientId);
+////        log.info("The result is returned: {}", orderNumber);
+////        return orderNumber;
 //        return orderNumber;
-        return orderNumber;
+        return null;
     }
 
     /*

@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="web" />
+        <module name="test" />
         <module name="persistence" />
         <module name="usecase" />
         <module name="core" />
@@ -22,6 +23,7 @@
       <module name="infrastructure" target="11" />
       <module name="persistence" target="11" />
       <module name="taxi-station" target="11" />
+      <module name="test" target="11" />
       <module name="untitled" target="11" />
       <module name="usecase" target="11" />
       <module name="web" target="11" />
@@ -34,6 +36,7 @@
       <module name="infrastructure" options="-parameters" />
       <module name="persistence" options="-parameters" />
       <module name="taxi-station" options="-parameters" />
+      <module name="test" options="-parameters" />
       <module name="untitled" options="-parameters" />
       <module name="usecase" options="-parameters" />
       <module name="web" options="-parameters" />

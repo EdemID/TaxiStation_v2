@@ -20,7 +20,7 @@ import java.util.TimerTask;
 @Slf4j
 public class BusinessLogic {
 
-    SearchForWorkingEmployees searchForWorkingEmployees;
+    SearchForWorkingEmployeesAndFreeCar searchForWorkingEmployeesAndFreeCar;
     CarRepair carRepair;
     OrderNumberServiceImpl orderNumberService;
     DispatcherServiceImpl dispatcherService;
@@ -30,14 +30,14 @@ public class BusinessLogic {
     CarServiceImpl carService;
 
     private OrderNumber assignCarToDriverAndCallClient(Client client, Dispatcher dispatcher, ClientServiceImpl clientService) throws Exception {
-        Driver driver = searchForWorkingEmployees.getWorkingDriver();
+        Driver driver = searchForWorkingEmployeesAndFreeCar.getFreeAndWorkingDriver();
         if (driver == null) {
             log.info("Not found a working driver");
             throw new WorkingDtoNotFoundException("Водители");
         }
         log.info("Found a working driver with name={}", driver.getName());
 
-        Car car = searchForWorkingEmployees.getWorkingCar();
+        Car car = searchForWorkingEmployeesAndFreeCar.getFreeCar();
         if (car == null) {
             log.info("Not found a working car");
             throw new WorkingDtoNotFoundException("Автомобили");
@@ -113,7 +113,7 @@ public class BusinessLogic {
             throw new CallBeforeCompletionOfOrderException(client.getOrderNumber());
         }
 
-        Dispatcher dispatcher = searchForWorkingEmployees.getWorkingDispatcher();
+        Dispatcher dispatcher = searchForWorkingEmployeesAndFreeCar.getWorkingDispatcher();
         OrderNumber orderNumber = assignCarToDriverAndCallClient(client, dispatcher, clientService);
         client.setOrderNumber(orderNumber.getNumber());
         clientService.save(client);
