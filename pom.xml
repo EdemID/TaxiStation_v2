@@ -2,14 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <modules>
-        <module>domain</module>
-        <module>infrastructure</module>
-        <module>core</module>
-        <module>persistence</module>
-        <module>web</module>
-        <module>test</module>
-    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -52,4 +44,43 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>domain</module>
+                <module>infrastructure</module>
+                <module>core</module>
+                <module>persistence</module>
+                <module>web</module>
+                <module>test</module>
+            </modules>
+            <properties>
+                <db.address>jdbc:postgresql://localhost:5432/taxi_station_v2</db.address>
+                <db.username>postgres</db.username>
+                <db.password>0</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>production</id>
+            <modules>
+                <module>domain</module>
+                <module>infrastructure</module>
+                <module>core</module>
+                <module>persistence</module>
+                <module>web</module>
+            </modules>
+            <properties>
+                <db.address>production db</db.address>
+                <db.username>postgres</db.username>
+                <db.password>0</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+    </profiles>
 </project>
