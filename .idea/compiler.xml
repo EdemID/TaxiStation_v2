@@ -8,19 +8,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="web" />
-        <module name="test" />
+        <module name="core-api" />
         <module name="persistence" />
-        <module name="usecase" />
+        <module name="application" />
+        <module name="model" />
         <module name="core" />
         <module name="infrastructure" />
-        <module name="domain" />
         <module name="untitled" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="adapter" target="11" />
+      <module name="application" target="11" />
       <module name="core" target="11" />
+      <module name="core-api" target="11" />
       <module name="domain" target="11" />
       <module name="infrastructure" target="11" />
+      <module name="model" target="11" />
       <module name="persistence" target="11" />
       <module name="taxi-station" target="11" />
       <module name="test" target="11" />
@@ -31,9 +35,13 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="adapter" options="-parameters" />
+      <module name="application" options="-parameters" />
       <module name="core" options="-parameters" />
+      <module name="core-api" options="-parameters" />
       <module name="domain" options="-parameters" />
       <module name="infrastructure" options="-parameters" />
+      <module name="model" options="-parameters" />
       <module name="persistence" options="-parameters" />
       <module name="taxi-station" options="-parameters" />
       <module name="test" options="-parameters" />

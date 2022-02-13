@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adapter/adapter.iml" filepath="$PROJECT_DIR$/adapter/adapter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usecase/application/application.iml" filepath="$PROJECT_DIR$/usecase/application/application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usecase/core/core.iml" filepath="$PROJECT_DIR$/usecase/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/domain/domain.iml" filepath="$PROJECT_DIR$/domain/domain.iml" />
       <module fileurl="file://$PROJECT_DIR$/infrastructure/infrastructure.iml" filepath="$PROJECT_DIR$/infrastructure/infrastructure.iml" />
-      <module fileurl="file://$PROJECT_DIR$/persistence/persistence.iml" filepath="$PROJECT_DIR$/persistence/persistence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/domain/model/model.iml" filepath="$PROJECT_DIR$/domain/model/model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adapter/persistence/persistence.iml" filepath="$PROJECT_DIR$/adapter/persistence/persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/taxi-station.iml" filepath="$PROJECT_DIR$/taxi-station.iml" />
-      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/web/web.iml" filepath="$PROJECT_DIR$/web/web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/usecase/usecase.iml" filepath="$PROJECT_DIR$/usecase/usecase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/adapter/web/web.iml" filepath="$PROJECT_DIR$/adapter/web/web.iml" />
     </modules>
   </component>
 </project>

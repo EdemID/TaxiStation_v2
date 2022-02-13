@@ -3,13 +3,21 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>taxi-station</artifactId>
+        <artifactId>usecase</artifactId>
         <groupId>elp.max.e</groupId>
         <version>0.0.2-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>infrastructure</artifactId>
+    <artifactId>application</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>elp.max.e</groupId>
+            <artifactId>web</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
