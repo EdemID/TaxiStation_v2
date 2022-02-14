@@ -1,7 +1,6 @@
 package elp.max.e.core.service;
 
 import elp.max.e.core.exception.CallBeforeCompletionOfOrderException;
-import elp.max.e.core.exception.WorkingDtoNotFoundException;
 import elp.max.e.infrastructure.utils.Utils;
 import elp.max.e.model.*;
 import elp.max.e.persistence.service.*;
@@ -29,18 +28,8 @@ public class BusinessLogic {
 
     private OrderNumber assignCarToDriverAndCallClient(Client client, Dispatcher dispatcher, ClientServiceImpl clientService) throws Exception {
         Driver driver = searchForWorkingEmployeesAndFreeCar.getFreeAndWorkingDriver();
-        if (driver == null) {
-            log.info("Not found a working driver");
-            throw new WorkingDtoNotFoundException("Водители");
-        }
-        log.info("Found a working driver with name={}", driver.getName());
 
         Car car = searchForWorkingEmployeesAndFreeCar.getFreeCar();
-        if (car == null) {
-            log.info("Not found a working car");
-            throw new WorkingDtoNotFoundException("Автомобили");
-        }
-        log.info("Found a working car with number={}", car.getNumberCar());
 
         //заняты клиентом
         driver.setBusy(true);

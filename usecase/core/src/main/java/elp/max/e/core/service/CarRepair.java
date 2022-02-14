@@ -18,20 +18,20 @@ import java.util.concurrent.*;
 @Slf4j
 public class CarRepair {
 
-    void sendCarForRepair(Car carEntity, CarServiceImpl carService, MechanicServiceImpl mechanicService) {
-        log.info("Car with id={} arrived for repair", carEntity.getId());
+    void sendCarForRepair(Car car, CarServiceImpl carService, MechanicServiceImpl mechanicService) {
+        log.info("Car with id={} arrived for repair", car.getId());
         boolean busy = true;
-        carEntity.setBusy(busy);
+        car.setBusy(busy);
         // хардкор, так как пока у нас 1 механик, в будущем можно также реализовать двух механиков с режимом работы
         Mechanic mechanic = mechanicService.findById(1L);
-        carEntity.setMechanic(mechanic);
+        car.setMechanic(mechanic);
 
-        carService.save(carEntity);
+        carService.save(car);
 
         /**
          * если создать бин карСервиса, то будет цикл: карСервис <-> механикСервис
          */
-        repairCar(mechanic, carEntity, carService, mechanicService);
+        repairCar(mechanic, car, carService, mechanicService);
     }
 
     public void repairCar(Mechanic mechanic, Car carEntity, CarServiceImpl carService, MechanicServiceImpl mechanicService) {
@@ -94,7 +94,7 @@ public class CarRepair {
     @AllArgsConstructor
     private static class TimerRepairCar extends TimerTask {
 
-        private Car carEntity;
+        private Car car;
         private CarServiceImpl carService;
         private Mechanic mechanicEntity;
         private Mechanic mechanic;
@@ -105,14 +105,14 @@ public class CarRepair {
             log.info("Задача \"Время ремонта\" запущена: {}", new Date());
 
             // как избавиться от механика?
-            carEntity.setMechanic(null);
-            carEntity.setBusy(false);
-            log.info("Car resource before repair: {}", carEntity.getResource());
-            carEntity.setResource(mechanicEntity.getResource());
-            log.info("Car resource after repair: {}", carEntity.getResource());
-            carService.update(carEntity.getId(), carEntity);
+            car.setBusy(false);
+            log.info("Car resource before repair: {}", car.getResource());
+            car.setResource(mechanicEntity.getResource());
+            log.info("Car resource after repair: {}", car.getResource());
+            carService.update(car.getId(), car);
 
             mechanic.setBusy(false);
+            mechanic.removeCarFromBrokenCars(car);
             mechanicService.update(mechanic.getId(), mechanic);
             log.info("Mechanic freed");
             log.info("Конец ремонта: {}", new Date());
